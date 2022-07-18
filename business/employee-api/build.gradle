@@ -1,0 +1,10 @@
+version '1.0-SNAPSHOT'
+
+dependencies {
+    implementation libpacks.spring_comon
+    implementation libpacks.spring_cloud_feign
+    implementation libpacks.cloud_common
+    implementation libpacks.eureka_client
+    implementation libpacks.postgres
+    implementation project(':common')
+}

@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Merch2803/${CONFIG_URL}
+          skipSslValidation: true
+        native:
+          searchLocations: classpath:/config
+  profiles:
+    active: native
+server:
+  port: 8888

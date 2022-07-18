@@ -1,0 +1,15 @@
+server:
+  port: 8085
+
+spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    generate-ddl: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/my_office
+    username: merch
+    password: merch
+    driver-class-name: org.postgresql.Driver
+  jackson:
+    date-format: com.fasterxml.jackson.databind.util.ISO8601DateFormat

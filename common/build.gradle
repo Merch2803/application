@@ -1,0 +1,10 @@
+version '0.0.1'
+
+bootJar.enabled(false)
+jar.enabled(true)
+
+dependencies {
+    implementation libpacks.spring_cloud_feign
+    implementation libpacks.mongo
+    implementation libpacks.postgres
+}

@@ -1,0 +1,26 @@
+server:
+  port: 8080
+
+spring:
+  main:
+    web-application-type: reactive
+  cloud:
+    gateway:
+      discovery.locator:
+        enabled: true
+        lowerCaseServiceId: true
+      routes:
+        - id: ${EMPLOYEE_API}
+          uri: lb://${EMPLOYEE_API}
+          predicates:
+            - Path=/**
+        - id: ${WORKSPACES_API}
+          uri: lb://${WORKSPACES_API}
+          predicates:
+            - Path=/**
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
