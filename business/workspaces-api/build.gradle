@@ -7,3 +7,9 @@ dependencies {
     implementation libpacks.postgres
     implementation project(':common')
 }
+
+def fileName = 'workspaces-api'
+bootJar{
+    mainClass = 'com.epam.WorkspacesApplication'
+    archiveName "${fileName}.jar"
+}

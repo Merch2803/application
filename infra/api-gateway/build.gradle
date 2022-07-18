@@ -8,3 +8,9 @@ dependencies {
     implementation libpacks.routing
     implementation project(':common')
 }
+
+def fileName = 'api-gateway'
+bootJar{
+    mainClass = 'com.epam.ApiGatewayApplication'
+    archiveName "${fileName}.jar"
+}

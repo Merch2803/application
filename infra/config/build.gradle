@@ -4,3 +4,9 @@ dependencies {
     implementation libpacks.spring_comon
     implementation libpacks.cloud_config_server
 }
+
+def fileName = 'config-server'
+bootJar{
+    mainClass = 'com.epam.ConfigServerApplication'
+    archiveName "${fileName}.jar"
+}

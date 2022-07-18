@@ -8,3 +8,9 @@ dependencies {
     implementation libpacks.postgres
     implementation project(':common')
 }
+
+def fileName = 'employee-api'
+bootJar{
+    mainClass = 'com.epam.EmployeeApplication'
+    archiveName "${fileName}.jar"
+}

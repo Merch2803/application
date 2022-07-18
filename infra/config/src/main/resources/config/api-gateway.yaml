@@ -1,6 +1,11 @@
 server:
   port: 8080
 
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+
 spring:
   main:
     web-application-type: reactive

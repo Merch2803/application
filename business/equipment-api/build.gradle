@@ -7,3 +7,9 @@ dependencies {
     implementation libpacks.mongo
     implementation project(':common')
 }
+
+def fileName = 'equipment-api'
+bootJar{
+    mainClass = 'com.epam.EquipmentApplication'
+    archiveName "${fileName}.jar"
+}

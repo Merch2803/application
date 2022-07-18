@@ -79,4 +79,5 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
+bootJar.enabled(false)
 //apply plugin: "io.spring.dependency-management"

@@ -14,7 +14,7 @@ services:
       - POSTGRES_DB_SCHEMA=workspaces
     volumes:
       - ./docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
-      - postgres_data:/var/lib/postgresql/data
+      - aplication_postgres_data:/var/lib/postgresql/data
     networks:
       - local
 
@@ -110,7 +110,7 @@ services:
       - local
 
 volumes:
-  postgres_data:
+  aplication_postgres_data:
     driver: local
 
 networks:

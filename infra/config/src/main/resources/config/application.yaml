@@ -2,3 +2,15 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://${EUREKA_URL:localhost}:8282/eureka
+
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: health

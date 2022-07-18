@@ -5,3 +5,9 @@ dependencies {
     implementation libpacks.cloud_common
     implementation libpacks.eureka_server
 }
+
+def fileName = 'eureka-server'
+bootJar{
+    mainClass = 'com.epam.EurekaServerApplication'
+    archiveName "${fileName}.jar"
+}
