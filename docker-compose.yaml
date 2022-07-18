@@ -78,7 +78,7 @@ services:
 
   config-server:
     build: infra/config
-    image: configserver
+    image: config-server
     container_name: config-server
     ports:
       - "8888:8888"

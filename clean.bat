@@ -1,0 +1,1 @@
+docker image rm --no-prune api-gateway employee-api workspaces-api config-server eureka-server
