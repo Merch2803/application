@@ -24,12 +24,17 @@ subprojects {
     group = "com.epam"
     apply plugin: 'java'
     apply plugin: 'groovy'
+    apply plugin: 'idea'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
     apply from: "${rootProject.projectDir}/libraries.gradle"
 
     repositories {
         mavenCentral()
+    }
+
+    task wrapper(type: Wrapper) {
+        gradleVersion = '7.4'
     }
 
     sourceCompatibility = '11'
@@ -51,33 +56,9 @@ subprojects {
     }
 }
 
-group 'com.epam'
-version '1.0-SNAPSHOT'
-
-repositories {
+repositories{
     mavenCentral()
 }
 
-ext {
-    set('springCloudVersion', "2021.0.3")
-}
-
-dependencies {
-    implementation 'org.springframework.cloud:spring-cloud-config-server'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
-}
-
-dependencyManagement {
-    imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-    }
-}
-
-tasks.named('test') {
-    useJUnitPlatform()
-}
-
 bootJar.enabled(false)
-//apply plugin: "io.spring.dependency-management"
+bootJarMainClassName.enabled(false)

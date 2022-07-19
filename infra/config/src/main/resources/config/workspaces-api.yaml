@@ -10,10 +10,11 @@ spring:
   jpa:
     database: POSTGRESQL
     show-sql: true
+    generate-ddl: true
   datasource:
     url: jdbc:postgresql://localhost:5432/my_office
     username: merch
     password: merch
-    driverClassName: org.postgresql.Driver
+    driver-class-name: org.postgresql.Driver
   jackson:
     date-format: com.fasterxml.jackson.databind.util.ISO8601DateFormat

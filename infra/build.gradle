@@ -1,1 +1,4 @@
 bootJar.enabled(false)
+jar.enabled(false)
+bootJarMainClassName.enabled(false)
+wrapper.enabled(false)
