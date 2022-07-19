@@ -56,9 +56,5 @@ subprojects {
     }
 }
 
-repositories{
-    mavenCentral()
-}
-
 bootJar.enabled(false)
 bootJarMainClassName.enabled(false)
