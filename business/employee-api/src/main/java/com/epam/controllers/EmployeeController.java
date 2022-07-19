@@ -1,7 +1,6 @@
 package com.epam.controllers;
 
 import com.epam.entity.EmployeeDto;
-import com.epam.repositories.EmployeeRepository;
 import com.epam.services.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +16,6 @@ import java.util.List;
 public class EmployeeController {
 
     private final EmployeeService employeeService;
-    private final EmployeeRepository employeeRepository;
 
     @GetMapping("/{id}")
     public EmployeeDto getEmployeeById(@PathVariable String id) {
