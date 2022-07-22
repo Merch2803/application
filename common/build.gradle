@@ -5,6 +5,5 @@ jar.enabled(true)
 
 dependencies {
     implementation libpacks.spring_cloud_feign
-    implementation libpacks.mongo
-    implementation libpacks.postgres
+    implementation libpacks.data_entities
 }

@@ -17,6 +17,7 @@ services:
       - aplication_postgres_data:/var/lib/postgresql/data
     networks:
       - local
+      - docker-elk_elk
 
   mongo:
     image: mongo
@@ -32,6 +33,7 @@ services:
       - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
     networks:
       - local
+      - docker-elk_elk
 
   employee-api:
     build: business/employee-api
@@ -47,6 +49,7 @@ services:
       - eureka-server
     networks:
       - local
+      - docker-elk_elk
 
   workspaces-api:
     build: business/workspaces-api
@@ -62,6 +65,7 @@ services:
       - eureka-server
     networks:
       - local
+      - docker-elk_elk
 
   eureka-server:
     build: infra/eureka-server
@@ -78,6 +82,7 @@ services:
 #        condition: service_healthy
     networks:
       - local
+      - docker-elk_elk
 
   config-server:
     build: infra/config
@@ -98,6 +103,7 @@ services:
       - mongo
     networks:
       - local
+      - docker-elk_elk
 
   api-gateway:
     build: infra/api-gateway
@@ -116,6 +122,7 @@ services:
       - workspaces-api
     networks:
       - local
+      - docker-elk_elk
 
 volumes:
   aplication_postgres_data:
@@ -124,3 +131,5 @@ volumes:
 networks:
   local:
     driver: bridge
+  docker-elk_elk:
+    external: true

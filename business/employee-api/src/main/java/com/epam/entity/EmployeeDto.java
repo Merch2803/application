@@ -16,4 +16,5 @@ public class EmployeeDto {
     private String lastName;
     private String email;
     private Workspace workspace;
+    private Equipment equipment;
 }

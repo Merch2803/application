@@ -5,6 +5,7 @@ dependencies {
     implementation libpacks.cloud_common
     implementation libpacks.eureka_client
     implementation libpacks.postgres
+    implementation libpacks.logger
     implementation project(':common')
 }
 

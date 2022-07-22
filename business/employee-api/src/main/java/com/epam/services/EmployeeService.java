@@ -80,4 +80,8 @@ public class EmployeeService {
                 .workspace(workspace)
                 .build();
     }
+
+    public void deleteEmployeeById(String id) {
+        employeeRepository.deleteById(id);
+    }
 }

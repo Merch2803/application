@@ -3,10 +3,8 @@ package com.epam.controllers;
 import com.epam.entity.EmployeeDto;
 import com.epam.services.EmployeeService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,5 +23,11 @@ public class EmployeeController {
     @GetMapping()
     public List<EmployeeDto> getEmployees() {
         return employeeService.getEmployees();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteEmployeeById(@PathVariable String id) {
+        employeeService.deleteEmployeeById(id);
+        return ResponseEntity.ok("The employee has been deleted successfully!");
     }
 }
