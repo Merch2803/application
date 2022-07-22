@@ -41,7 +41,8 @@ ext {
                     'org.springframework.data:spring-data-mongodb'
             ],
             logger             : [
-                    'ch.qos.logback:logback-classic'
+                    'ch.qos.logback:logback-classic',
+                    'net.logstash.logback:logstash-logback-encoder:7.2'
             ]
 
     ]

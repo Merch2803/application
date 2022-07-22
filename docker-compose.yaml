@@ -54,12 +54,14 @@ services:
   workspaces-api:
     build: business/workspaces-api
     image: workspaces-api
+    restart: always
     ports:
       - "8081:8081"
     environment:
       - CONFIG_URL=config-server
       - EUREKA_URL=eureka-server
       - POSTGRES=postgres
+      - LOGSTASH_URL=logstash
     depends_on:
       - config-server
       - eureka-server
