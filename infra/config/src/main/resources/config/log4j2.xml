@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+    <springProperty name="appName" source="spring.application.name"/>
+    <springProperty name="logstashUrl" source="logstash.url"/>
+<!--    <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">-->
+<!--        <destination>${logstashUrl}:5000</destination>-->
+<!--        <encoder class="net.logstash.logback.encoder.LogstashEncoder">-->
+<!--            <customFields>{"app_name":"${appName}"}</customFields>-->
+<!--        </encoder>-->
+<!--    </appender>-->
+
+<!--    <appender name="kafkaAppender" class="com.github.danielwegener.logback.kafka.KafkaAppender">-->
+<!--        <encoder class="net.logstash.logback.encoder.LogstashEncoder">-->
+<!--            <customFields>{"app_name":"${appName}"}</customFields>-->
+<!--        </encoder>-->
+<!--        <topic>logs</topic>-->
+<!--        <keyingStrategy class="com.github.danielwegener.logback.kafka.keying.NoKeyKeyingStrategy"/>-->
+<!--        <producerConfig>bootstrap.servers=kafka1:9092,kafka2:9092,kafka3:9092</producerConfig>-->
+<!--    </appender>-->
+
+    <Appenders>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="%m%n"/>
+        </Console>
+        <Kafka name="Kafka" topic="logs">
+            <PatternLayout pattern="%date %message"/>
+            <Property name="bootstrap.servers">kafka1:9092,kafka2:9092,kafka3:9092</Property>
+        </Kafka>
+    </Appenders>
+
+    <springProfile name="default">
+        <Loggers>
+            <Root level="INFO">
+                <AppenderRef ref="STDOUT"/>
+                <AppenderRef ref="Kafka"/>
+            </Root>
+        </Loggers>
+    </springProfile>
+
+
+    <springProfile name="kafka">
+        <Loggers>
+            <Root level="INFO">
+                <AppenderRef ref="STDOUT"/>
+                <AppenderRef ref="Kafka"/>
+            </Root>
+        </Loggers>
+    </springProfile>
+</configuration>

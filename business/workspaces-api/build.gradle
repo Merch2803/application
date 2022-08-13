@@ -6,6 +6,7 @@ dependencies {
     implementation libpacks.eureka_client
     implementation libpacks.postgres
     implementation libpacks.logger
+    implementation libpacks.kafka
     implementation project(':common')
 }
 

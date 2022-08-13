@@ -6,6 +6,16 @@ spring:
   cloud:
     config:
       fail-fast: true
+  kafka:
+    bootstrap-servers: kafka1:9092,kafka2:9092,kafka3:9092
+    consumer:
+      group-id: employee-api
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      properties:
+        spring.deserializer.value.delegate.class: org.apache.kafka.common.serialization.StringDeserializer
+        spring.json.use.type.headers: false
+      auto-offset-reset: earliest
 
   data:
     mongodb:
@@ -13,3 +23,10 @@ spring:
 
 server:
   port: 8079
+
+kafka:
+  topics:
+    equipments-topic:
+      name: com.epam.equipments.topic
+      partitions: 1
+      replicationFactor: 1

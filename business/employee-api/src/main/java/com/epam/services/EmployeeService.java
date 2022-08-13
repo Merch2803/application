@@ -4,6 +4,7 @@ import com.epam.entity.Employee;
 import com.epam.entity.EmployeeDto;
 import com.epam.entity.Workspace;
 import com.epam.exceptions.EmployeeNotFoundException;
+import com.epam.kafka.GetEquipmentProducer;
 import com.epam.repositories.EmployeeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,23 +19,7 @@ public class EmployeeService {
     private final WorkspaceService workspaceService;
     private final EmployeeRepository employeeRepository;
 
-//    private List<Employee> employees = new ArrayList<>(List.of(
-//            new Employee("0000001", "Ivan", "Ivanov", "Ivan_Ivanov@corpmail.com", "0000001"),
-//            new Employee("0000002", "Ivan", "Ivanov", "Ivan_Ivanov@corpmail.com", "0000002"),
-//            new Employee("0000003", "Ivan", "Ivanov", "Ivan_Ivanov@corpmail.com", "0000003"),
-//            new Employee("0000004", "Ivan", "Ivanov", "Ivan_Ivanov@corpmail.com", "0000004"),
-//            new Employee("0000005", "Ivan", "Ivanov", "Ivan_Ivanov@corpmail.com", "0000005"),
-//            new Employee("0000006", "Ivan", "Ivanov", "Ivan_Ivanov@corpmail.com", "0000006"),
-//            new Employee("0000007", "Ivan", "Ivanov", "Ivan_Ivanov@corpmail.com", "0000007"),
-//            new Employee("0000008", "Ivan", "Ivanov", "Ivan_Ivanov@corpmail.com", "0000008"),
-//            new Employee("0000009", "Ivan", "Ivanov", "Ivan_Ivanov@corpmail.com", "0000009"),
-//            new Employee("0000010", "Ivan", "Ivanov", "Ivan_Ivanov@corpmail.com", "0000010"),
-//            new Employee("0000011", "Ivan", "Ivanov", "Ivan_Ivanov@corpmail.com", "0000011"),
-//            new Employee("0000012", "Ivan", "Ivanov", "Ivan_Ivanov@corpmail.com", "0000012"),
-//            new Employee("0000013", "Ivan", "Ivanov", "Ivan_Ivanov@corpmail.com", "0000013"),
-//            new Employee("0000014", "Ivan", "Ivanov", "Ivan_Ivanov@corpmail.com", "0000014"),
-//            new Employee("0000015", "Ivan", "Ivanov", "Ivan_Ivanov@corpmail.com", "0000015")
-//    ));
+    private final GetEquipmentProducer equipmentProducer;
 
     public EmployeeDto getEmployeeById(String id) {
         Employee employee = employeeRepository.findById(id)
@@ -68,6 +53,7 @@ public class EmployeeService {
                 .lastName(employee.getLastName())
                 .email(employee.getEmail())
                 .workspace(workspaceService.getWorkspaceById(employee.getWorkspaceId()))
+                .equipment(equipmentProducer.getEquipmentById(employee.getEquipmentId()))
                 .build();
     }
 
